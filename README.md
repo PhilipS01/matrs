@@ -45,7 +45,7 @@ Das Gieren des Geschützes übernimmt ein 39,5:1 **Spannungswellengetriebe**. Al
 
 ### Nicken
 
-Das Nicken wird durch ein Zahnriemengetriebe mit einem Übersetzungsverhältnis von 3⅓:1 realisiert. Als Antrieb habe ich einen SG90 Mikroservo benutzt. Des weiteren sorgt ein Idler mit einstellbarer Spannung für eine optimale Kraftübersetzung.
+Das Nicken wird durch ein **Zahnriemengetriebe** mit einem Übersetzungsverhältnis von 3⅓:1 realisiert. Als Antrieb habe ich einen SG90 Mikroservo benutzt. Des weiteren sorgt ein Idler mit einstellbarer Spannung für eine optimale Kraftübersetzung.
 
 ### Schießen
 
@@ -61,7 +61,7 @@ Des weiteren ist dank des verbauten Chipsets Bluetooth® Low Energy und somit ei
 
 Es gibt einen **BLE-Service** mit folgenden Charakteristiken:
 
-```
+```cpp
 BLECharacteristic headingInt("b3de23b1-12fe-4266-a590-53528c11116d", BLERead, 3);
 BLEIntCharacteristic buttonPress("6541935a-5c22-464b-b150-c335eaa92910", BLERead | BLEWrite | BLENotify);
 BLEIntCharacteristic triggerPull("626488b2-70d1-4b89-ad13-45e8ee61ebd8", BLERead | BLENotify);
@@ -82,7 +82,7 @@ Ursprüngliche Versuche die Sensor-Daten zu Fusionieren fanden im Zahlenbereich 
 
 Um Störungen im Input der Sonseren zu reduzieren wird entweder ein simpler Low-Pass Filter angewendet:
 
-```
+```cpp
 EulerAngles calcLowPassAngles() {
    EulerAngles angles = calcHeading();
 
@@ -96,7 +96,7 @@ EulerAngles calcLowPassAngles() {
 
 ... oder wie in der derzeitigen Version lediglich die arithmetischen Mittel verwertet:
 
-```
+```cpp
 EulerAngles calcAverageAngles() {
    int N = 16;
    float averPitch=0; float averRoll=0; float averYaw=0;
